@@ -1,5 +1,6 @@
 package telran.ashkelon2020.person.service;
 
+import java.time.LocalDate;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -64,11 +65,13 @@ public class PersonServiceImpl implements PersonService {
 	}
 
 	@Override
-	public Iterable<PersonDto> findByBirthDates(BirthDateDto birthDateDto) {
-		return personRepository.findByBirthDateBetween(birthDateDto.getFrom(), birthDateDto.getTo())
+	public Iterable<PersonDto> findByAge(BirthDateDto birthDateDto) {
+		return personRepository.findByBirthDateBetween(LocalDate.now().minusYears(birthDateDto.getTo()), LocalDate.now().minusYears(birthDateDto.getFrom()))
 				.map(n -> modelMapper.map(n, PersonDto.class))
 				.collect(Collectors.toList());
 	}
+
+
 
 
 

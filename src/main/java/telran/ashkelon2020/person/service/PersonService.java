@@ -16,6 +16,6 @@ public interface PersonService {
 	
 	Iterable<PersonDto> findByName(String name);
 	
-	Iterable<PersonDto> findByBirthDates(BirthDateDto birthDateDto);
+	Iterable<PersonDto> findByAge(BirthDateDto birthDateDto);
 
 }

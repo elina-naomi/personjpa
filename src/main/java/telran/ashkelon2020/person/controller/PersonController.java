@@ -49,8 +49,8 @@ public class PersonController {
 	
 	@Transactional
 	@PostMapping("/persons/period")
-	public Iterable<PersonDto> findByBithDates(@RequestBody BirthDateDto birthDateDto) {
-		return personService.findByBirthDates(birthDateDto);
+	public Iterable<PersonDto> findByAge(@RequestBody BirthDateDto birthDateDto) {
+		return personService.findByAge(birthDateDto);
 	}
 
 }

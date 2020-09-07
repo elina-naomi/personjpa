@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BirthDateDto {
-	LocalDate from;
-	LocalDate to;
+	Integer from;
+	Integer to;
 
 }

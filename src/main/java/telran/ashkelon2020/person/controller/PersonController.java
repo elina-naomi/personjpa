@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import telran.ashkelon2020.person.dto.BirthDateDto;
+import telran.ashkelon2020.person.dto.CityPopulationDto;
 import telran.ashkelon2020.person.dto.PersonDto;
 import telran.ashkelon2020.person.dto.PersonUpdateDto;
 import telran.ashkelon2020.person.service.PersonService;
@@ -56,5 +57,30 @@ public class PersonController {
 	public Iterable<PersonDto> findByAge(@RequestBody BirthDateDto birthDateDto) {
 		return personService.findByAge(birthDateDto);
 	}
+	
+	@Transactional(readOnly = true)
+	@GetMapping("/persons/city/{city}")
+	public Iterable<PersonDto> findByCity(@PathVariable String city) {
+		return personService.findByCity(city);
+	}
+	
+	@Transactional(readOnly = true)
+	@GetMapping("/population/city")
+	public Iterable<CityPopulationDto> getCityPopulatin() {
+		return personService.getCityPopulation();
+	}
+	
+	@Transactional(readOnly = true)
+	@GetMapping("/persons/children")
+	public Iterable<PersonDto> getChildren() {
+		return personService.getChildren();
+	}
+	
+	@Transactional(readOnly = true)
+	@GetMapping("/persons/employees/salary/from/{min}/to/{max}")
+	public Iterable<PersonDto> findEmployeeBySalary(@PathVariable Integer min, @PathVariable Integer max) {
+		return personService.findEmployeeBySalary(min, max);
+	}
+	
 
 }

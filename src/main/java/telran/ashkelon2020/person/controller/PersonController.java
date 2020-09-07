@@ -1,8 +1,8 @@
 package telran.ashkelon2020.person.controller;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,20 +22,24 @@ public class PersonController {
 	@Autowired
 	PersonService personService;
 	
+	@Transactional
 	@PostMapping("/person")
 	public boolean addPerson(@RequestBody PersonDto personDto) {
 		return personService.addPerson(personDto);
 	}
+	
 	@GetMapping("/person/{id}")
 	public PersonDto findPersonById(@PathVariable Integer id) {
 		return personService.findPersonById(id);
 	}
 	
+	@Transactional
 	@PutMapping("/person/{id}")
 	public PersonDto editPerson(@PathVariable Integer id, @RequestBody PersonUpdateDto personUpdateDto) {
 		return personService.editPerson(id, personUpdateDto);
 	}
 	
+	@Transactional
 	@DeleteMapping("/person/{id}")
 	public PersonDto removePerson(@PathVariable Integer id) {
 		return personService.removePerson(id);
@@ -47,7 +51,7 @@ public class PersonController {
 		return personService.findByName(name);	
 	}
 	
-	@Transactional
+	@Transactional(readOnly = true)
 	@PostMapping("/persons/period")
 	public Iterable<PersonDto> findByAge(@RequestBody BirthDateDto birthDateDto) {
 		return personService.findByAge(birthDateDto);

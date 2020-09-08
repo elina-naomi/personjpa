@@ -18,7 +18,7 @@ import telran.ashkelon2020.person.model.Address;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME,
 					include = JsonTypeInfo.As.PROPERTY,
-					property = "type", visible = true)
+					property = "type")
 @JsonSubTypes({
 	@Type(value = ChildDto.class, name = "Child"),
 	@Type(value = EmployeeDto.class, name = "Employee"),

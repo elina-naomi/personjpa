@@ -15,7 +15,7 @@ public interface PersonService {
 	
 	PersonDto removePerson(Integer id);
 	
-	Iterable<PersonDto> findByName(String name);
+	Iterable<PersonDto> findByName(String name);  
 	
 	Iterable<PersonDto> findByAge(BirthDateDto birthDateDto);
 	
